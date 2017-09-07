@@ -33,7 +33,9 @@ public class DroolsAutoConfiguration {
     public KieFileSystem kieFileSystem() throws IOException {
         KieFileSystem kieFileSystem = getKieServices().newKieFileSystem();
         for (Resource file : getRuleFiles()) {
-            kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_PATH + file.getFilename(), "UTF-8"));
+        	int index = file.getFile().getCanonicalPath().indexOf(RULES_PATH);
+        	
+            kieFileSystem.write(ResourceFactory.newClassPathResource(file.getFile().getCanonicalPath().substring(index), "UTF-8"));
         }        
         return kieFileSystem;
     }
