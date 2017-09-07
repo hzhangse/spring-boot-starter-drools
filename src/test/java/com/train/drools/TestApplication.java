@@ -1,11 +1,11 @@
-package de.codecentric.drools;
+package com.train.drools;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-import de.codecentric.drools.configuration.DroolsAutoConfiguration;
+import com.train.drools.configuration.DroolsAutoConfiguration;
 
 @Configuration
 @EnableAutoConfiguration

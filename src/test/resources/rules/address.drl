@@ -2,8 +2,8 @@
 package plausibcheck.adress
 
 //list any import classes here.
-import de.codecentric.drools.test.model.Address
-import de.codecentric.drools.test.model.Order
+import com.train.drools.test.model.Address
+import com.train.drools.test.model.Order
 
 //declare any global variables here
 

@@ -1,9 +1,10 @@
-package de.codecentric.drools.test;
+package com.train.drools.test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.kie.api.cdi.KSession;
 import org.kie.api.runtime.KieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import de.codecentric.drools.TestApplication;
-import de.codecentric.drools.test.model.Address;
-import de.codecentric.drools.test.model.Order;
+import com.train.drools.TestApplication;
+import com.train.drools.test.model.Address;
+import com.train.drools.test.model.Order;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = TestApplication.class)
@@ -21,7 +22,7 @@ public class DroolsUsageTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(DroolsUsageTest.class);
     
-    @Autowired
+    @KSession("kieSession")
     private KieSession kieSession;
     
     @Test

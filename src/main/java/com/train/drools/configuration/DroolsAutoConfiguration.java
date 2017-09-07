@@ -1,4 +1,4 @@
-package de.codecentric.drools.configuration;
+package com.train.drools.configuration;
 
 import java.io.IOException;
 
@@ -13,9 +13,12 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.internal.io.ResourceFactory;
 import org.kie.spring.KModuleBeanFactoryPostProcessor;
+import org.kie.spring.annotations.KModuleAnnotationPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -68,6 +71,7 @@ public class DroolsAutoConfiguration {
     }
     
     @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     @ConditionalOnMissingBean(KieSession.class)
     public KieSession kieSession() throws IOException {
         return kieContainer().newKieSession();
@@ -81,6 +85,7 @@ public class DroolsAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(KModuleBeanFactoryPostProcessor.class)
     public KModuleBeanFactoryPostProcessor kiePostProcessor() {
-        return new KModuleBeanFactoryPostProcessor();
+    	return new KModuleAnnotationPostProcessor();
+       // return new KModuleBeanFactoryPostProcessor();
     }
 }

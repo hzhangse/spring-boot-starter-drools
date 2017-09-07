@@ -1,4 +1,4 @@
-package de.codecentric.drools.test.model;
+package com.train.drools.test.model;
 
 public class Order {
 
